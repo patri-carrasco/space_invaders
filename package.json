@@ -1,0 +1,23 @@
+{
+  "name": "space_invaders",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:patri-carrasco/space_invaders.git",
+  "author": "Patricia Carrasco <patri.carrasco@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "parcel": "^2.0.1",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.4"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "parcel index.html"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.0",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^8.5.0",
+    "eslint-plugin-vue": "^8.2.0"
+  }
+}
