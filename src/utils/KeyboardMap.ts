@@ -1,6 +1,5 @@
 export enum CanyonKey {
-	UP,
-	DOWN,
+	PRESS,
 	LEFT,
 	RIGHT,
 }
@@ -12,4 +11,5 @@ export interface KeyboardMap {
 export let MoveCanyon = {
 	ArrowLeft: CanyonKey.LEFT,
 	ArrowRight: CanyonKey.RIGHT,
+	Space: CanyonKey.PRESS
 };
