@@ -8,12 +8,12 @@ import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
 type Size = { w: number; h: number };
 
 export class Canyon extends Actor implements IActor {
-	carSize: Size;
-	carColor: string;
-	angle: number;
-	angleSpeed: number;
-	carSpeed: number;
-	carAcceleration: number;
+	canyonSize: Size;
+	canyonColor: string;
+	//angle: number;
+	// angleSpeed: number;
+	canyonSpeed: number;
+	// carAcceleration: number;
 	//image: HTMLImageElement;
 	keyboardMap: KeyboardMap;
 	constructor(
@@ -23,12 +23,12 @@ export class Canyon extends Actor implements IActor {
 	) {
 		super(initialPos);
 		this.keyboardMap = keyboardMap;
-		this.carSize = size;
-		this.carColor = "red";
-		this.angle = 0;
-		this.angleSpeed = 0;
-		this.carSpeed = 0;
-		this.carAcceleration = 0;
+		this.canyonSize = size;
+		this.canyonColor = "green";
+		// this.angle = 0;
+		// this.angleSpeed = 0;
+		// this.carSpeed = 0;
+		// this.carAcceleration = 0;
 
 		// // Car image
 		// this.image = new Image();
@@ -38,8 +38,9 @@ export class Canyon extends Actor implements IActor {
 		
 	}
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
-		ctx.fillStyle = this.carColor;
+		ctx.fillStyle = this.canyonColor;
 		//ctx.translate(this.position.x, this.position.y);
+		
 		
 		//ctx.drawImage(this.image, -50, -25, 100, 50);
 		ctx.fill();
@@ -48,9 +49,9 @@ export class Canyon extends Actor implements IActor {
 	keyboard_event_down(key: string) {
 		let tecla = this.keyboardMap[key];
 		if (tecla == CanyonKey.LEFT) {
-			this.angleSpeed -= 4;
+			this.canyonSpeed -= 4;
 		} else if (tecla == CanyonKey.RIGHT) {
-			this.angleSpeed += 4;
+			this.canyonSpeed += 4;
         }
 	}
 	// keyboard_event_up(key: string) {
