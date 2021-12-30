@@ -15,8 +15,8 @@ window.onload = () => {
 	
 
 	let fps = new FPSViewer({ x: 5, y: 15 });
-	let canyon = new Canyon({x:10,y:20},MoveCanyon); 
-	
+	let canyon = new Canyon({x:2,y:965},MoveCanyon); 
+	console.log(canyon.position.x)
 	let actors: Array<IActor> = [fps,canyon];
 
 	let lastFrame = 0;
@@ -30,6 +30,7 @@ window.onload = () => {
 		actors.forEach((e) => {
 			ctx.save();
 			e.draw(delta, ctx);
+	
 			ctx.restore();
 		});
 		window.requestAnimationFrame(render);
@@ -38,19 +39,20 @@ window.onload = () => {
 	window.requestAnimationFrame(render);
 
 	document.body.addEventListener("keydown", (e) => {
-		// console.log(e.key);
+		
 		actors.forEach((actor) => {
 			if (actor.keyboard_event_down) {
 				actor.keyboard_event_down(e.key);
+				
 			}
 		});
 	});
-	document.body.addEventListener("keyup", (e) => {
-		// console.log(e.key);
-		actors.forEach((actor) => {
-			if (actor.keyboard_event_up) {
-				actor.keyboard_event_up(e.key);
-			}
-		});
-	});
+	// document.body.addEventListener("keyup", (e) => {
+	// 	// console.log(e.key);
+	// 	actors.forEach((actor) => {
+	// 		if (actor.keyboard_event_up) {
+	// 			actor.keyboard_event_up(e.key);
+	// 		}
+	// 	});
+	// });
 };
