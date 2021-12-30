@@ -36,11 +36,9 @@ export class Canyon extends Actor implements IActor {
 	}
 	update(delta: number) {
 		let newPos: Point = {
-			x: this.position.x += this.canyonSpeed,
-			y: this.position.y =this.position.y,
+			x: this.position.x + this.canyonSpeed,
+			y: this.position.y,
 		};
-	
-		
 		if (checkLimits(newPos)) {
 			this.position = newPos;	
 		}	
