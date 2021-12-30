@@ -69,11 +69,10 @@ export class Canyon extends Actor implements IActor {
 			//TODO: función disparo
 
 			ctx.beginPath();  
-			ctx.fillStyle = "red";     // Start a new path
-			console.log(this.position.x, this.position.y)
-			ctx.moveTo(this.position.x, this.position.y);    // Move the pen to (30, 50)
-			ctx.lineTo(this.position.x, 900);  // Draw a line to (150, 100)
-			ctx.stroke();
+			ctx.moveTo(this.position.x, this.position.y);    
+			ctx.lineTo(this.position.x, 900);  
+			ctx.strokeStyle = '#ff0000';
+      		ctx.stroke();
 		
 			// 	//ctx.moveTo(30, 50);    // Move the pen to (30, 50)
 			// ctx.lineTo(this.position.x, this.position.y-10);
