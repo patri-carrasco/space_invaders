@@ -17,7 +17,7 @@ Cada pantalla de juego comienza con cinco filas de 11 invasores. Las 2 filas inf
 Esto hace que cada pantalla valga un total de 990 puntos. La puntuación de cada pantalla se puede aumentar drásticamente mediante la destrucción táctica de las naves espaciales `(G)` de valor "misterioso" que vuelan con frecuencia de un lado a otro de la pantalla. Se puede buscar un santuario temporal debajo de los 4 refugios base `(E)`.
 
 # Agradecimientos
-A mi marido por aconsejarme a hacer este bootcamp y cuidar de los niños mientras yo tengo que estudiar
+A mi marido por aconsejarme a hacer este bootcamp y cuidar de los niños mientras yo tengo que estudiar 	
 
 A Marcos .....
 
