@@ -11,24 +11,21 @@ type Size = { w: number; h: number };
 export class Enemy extends Actor implements IActor {
 	enemySize: Size;
 	enemyColor: string;
-	//angle: number;
-	// angleSpeed: number;
+	
 	enemySpeed: number;
-	// carAcceleration: number;
-	//image: HTMLImageElement;
-	//keyboardMap: KeyboardMap;
+	
 	constructor(
 		initialPos: Point,
-		//keyboardMap: KeyboardMap,
+		
 		size: Size = { w: 50, h: 50 },
 	) {
 		super(initialPos);
-		//this.keyboardMap = keyboardMap;
+		
 		this.enemySize = size;
 		this.enemyColor = "red";
 	
-		this.enemySpeed = 0;
-		// this.canyonAcceleration = 0;
+		this.enemySpeed = 1.5; // negativos
+		
 
 		// // Car image
 		// this.image = new Image();
@@ -42,6 +39,7 @@ export class Enemy extends Actor implements IActor {
 		};
 		if (checkLimits(newPos)) {
 			this.position = newPos;	
+            
 		}	
 	}
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
@@ -49,41 +47,9 @@ export class Enemy extends Actor implements IActor {
 		ctx.fillStyle = this.enemyColor;
 		ctx.fillRect(this.position.x,this.position.y, this.enemySize.w, this.enemySize.h);
 
-		//ctx.translate(this.position.x, this.position.y);
-		//ctx.drawImage(this.image, -50, -25, 100, 50);
+		
 		ctx.fill();
 		ctx.stroke();
 	}
-	// keyboard_event_down(key: string, ctx: CanvasRenderingContext2D) {
-	// 	let tecla = this.keyboardMap[key];
-	// 	if (tecla == CanyonKey.LEFT) {
-	// 		this.canyonSpeed -= 4;
-			
-	// 	} else if (tecla == CanyonKey.RIGHT) {
-			
-	// 		this.canyonSpeed += 4;
-			
-    //     } else if (tecla == CanyonKey.SPACE){
-	// 		console.log(tecla,CanyonKey.SPACE)
-	// 		this.canyonSpeed = 0;
-	// 		//TODO: función disparo
 
-	// 		ctx.beginPath();  
-	// 		ctx.moveTo(this.position.x, this.position.y);    
-	// 		ctx.lineTo(this.position.x, 900);  
-	// 		ctx.strokeStyle = '#ff0000';
-    //   		ctx.stroke();
-		
-			
-
-	// 	}
-	// }
-	// keyboard_event_up(key: string) {
-	// 	let tecla = this.keyboardMap[key];
-	// 	if (tecla == Carkey.UP) {
-	// 		this.carAcceleration = 0;
-	// 	} else if (tecla == Carkey.DOWN) {
-	// 		this.carAcceleration = 0;
-	// 	}
-	// }
 }
