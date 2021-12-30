@@ -1,6 +1,7 @@
 import { Actor, IActor } from "./actors/Actor";
 
 import {Canyon} from "./actors/Canyon"
+import {Enemy} from "./actors/Enemy"
 import { FPSViewer } from "./actors/FPSViewer";
 import { MoveCanyon } from "./utils/KeyboardMap";
 
@@ -16,8 +17,9 @@ window.onload = () => {
 
 	let fps = new FPSViewer({x: 5, y: 15 });
 	let canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
+	let enemy = new Enemy({x:40,y:40})
 	
-	let actors: Array<IActor> = [fps,canyon];
+	let actors: Array<IActor> = [fps,canyon,enemy];
 
 	let lastFrame = 0;
 	const render = (time: number) => {
