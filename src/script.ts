@@ -45,7 +45,7 @@ window.onload = () => {
 		
 		actors.forEach((actor) => {
 			if (actor.keyboard_event_down) {
-				actor.keyboard_event_down(e.key);
+				actor.keyboard_event_down(e.key,ctx);
 				
 			}
 		});

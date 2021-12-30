@@ -3,6 +3,7 @@ import { Point } from "../types/Point";
 
 import { checkLimits } from "../utils/checkLimits";
 import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
+import { convertToObject } from "typescript";
 //const ferrariImg = require("../assets/ferrari.png");
 
 type Size = { w: number; h: number };
@@ -53,7 +54,7 @@ export class Canyon extends Actor implements IActor {
 		ctx.fill();
 		ctx.stroke();
 	}
-	keyboard_event_down(key: string) {
+	keyboard_event_down(key: string, ctx: CanvasRenderingContext2D) {
 		let tecla = this.keyboardMap[key];
 		if (tecla == CanyonKey.LEFT) {
 			this.canyonSpeed -= 4;
@@ -61,11 +62,25 @@ export class Canyon extends Actor implements IActor {
 		} else if (tecla == CanyonKey.RIGHT) {
 			
 			this.canyonSpeed += 4;
-			console.log("Entra derecha", this.position.x)
+			
         } else if (tecla == CanyonKey.SPACE){
 			console.log(tecla,CanyonKey.SPACE)
 			this.canyonSpeed = 0;
 			//TODO: función disparo
+
+			ctx.beginPath();  
+			ctx.fillStyle = "red";     // Start a new path
+			console.log(this.position.x, this.position.y)
+			ctx.moveTo(this.position.x, this.position.y);    // Move the pen to (30, 50)
+			ctx.lineTo(this.position.x, 900);  // Draw a line to (150, 100)
+			ctx.stroke();
+		
+			// 	//ctx.moveTo(30, 50);    // Move the pen to (30, 50)
+			// ctx.lineTo(this.position.x, this.position.y-10);
+			// ctx.fill();
+			// ctx.stroke();   
+			
+
 		}
 	}
 	// keyboard_event_up(key: string) {
