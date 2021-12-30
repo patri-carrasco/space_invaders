@@ -32,18 +32,21 @@ export class Canyon extends Actor implements IActor {
 		// // Car image
 		// this.image = new Image();
 		// this.image.src = ferrariImg;
+		console.log(initialPos,this.position.x+20)
 	}
 	update(delta: number) {
 		let newPos: Point = {
-			x: this.position.x =10,
-			y: this.position.y =0,
+			x: this.position.x += this.canyonSpeed,
+			y: this.position.y =this.position.y,
 		};
+	
+		
 		if (checkLimits(newPos)) {
-			this.position = newPos;
-			console.log("Nespos",newPos)
+			this.position = newPos;	
 		}	
 	}
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
+	
 		ctx.fillStyle = this.canyonColor;
 		ctx.fillRect(this.position.x,this.position.y, this.canyonSize.w, this.canyonSize.h);
 
@@ -54,17 +57,16 @@ export class Canyon extends Actor implements IActor {
 	}
 	keyboard_event_down(key: string) {
 		let tecla = this.keyboardMap[key];
-		
-		console.log(tecla,CanyonKey.SPACE)
 		if (tecla == CanyonKey.LEFT) {
-			this.position.x-= 4;
+			this.canyonSpeed -= 4;
 			
 		} else if (tecla == CanyonKey.RIGHT) {
-			console.log(this.position.x)
-			this.position.x += 4;
-			this.position.y=0;
+			
+			this.canyonSpeed += 4;
+			console.log("Entra derecha", this.position.x)
         } else if (tecla == CanyonKey.SPACE){
 			console.log(tecla,CanyonKey.SPACE)
+			this.canyonSpeed = 0;
 			//TODO: función disparo
 		}
 	}

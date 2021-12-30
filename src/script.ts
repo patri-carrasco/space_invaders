@@ -14,9 +14,9 @@ window.onload = () => {
 
 	
 
-	let fps = new FPSViewer({ x: 5, y: 15 });
-	let canyon = new Canyon({x:2,y:965},MoveCanyon); 
-	console.log(canyon.position.x)
+	let fps = new FPSViewer({x: 5, y: 15 });
+	let canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
+	
 	let actors: Array<IActor> = [fps,canyon];
 
 	let lastFrame = 0;
@@ -26,12 +26,15 @@ window.onload = () => {
 		lastFrame = time;
 		actors.forEach((e) => e.update(delta));
 		
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.fillStyle = "gray";
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
+
 		actors.forEach((e) => {
-			ctx.save();
+			//ctx.save();
 			e.draw(delta, ctx);
 	
-			ctx.restore();
+			//ctx.restore();
 		});
 		window.requestAnimationFrame(render);
 	};
