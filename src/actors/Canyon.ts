@@ -27,7 +27,7 @@ export class Canyon extends Actor implements IActor {
 		this.canyonSize = size;
 		this.canyonColor = "green";
 	
-		this.canyonSpeed = 0;
+		this.canyonSpeed = 15;
 		// this.canyonAcceleration = 0;
 
 		// // Car image
@@ -36,13 +36,13 @@ export class Canyon extends Actor implements IActor {
 		console.log(initialPos,this.position.x+20)
 	}
 	update(delta: number) {
-		let newPos: Point = {
-			x: this.position.x + this.canyonSpeed,
-			y: this.position.y,
-		};
-		if (checkLimits(newPos)) {
-			this.position = newPos;	
-		}	
+		// let newPos: Point = {
+		// 	x: this.position.x + this.canyonSpeed,
+		// 	y: this.position.y,
+		// };
+		// if (checkLimits(newPos)) {
+		// 	this.position = newPos;	
+		// }	
 	}
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
 	
@@ -57,11 +57,12 @@ export class Canyon extends Actor implements IActor {
 	keyboard_event_down(key: string, ctx: CanvasRenderingContext2D) {
 		let tecla = this.keyboardMap[key];
 		if (tecla == CanyonKey.LEFT) {
-			this.canyonSpeed -= 4;
+			this.position.x -= this.canyonSpeed
 			
 		} else if (tecla == CanyonKey.RIGHT) {
 			
-			this.canyonSpeed += 4;
+			//this.canyonSpeed += 4;
+			this.position.x += this.canyonSpeed
 			
         } else if (tecla == CanyonKey.SPACE){
 			console.log(tecla,CanyonKey.SPACE)
