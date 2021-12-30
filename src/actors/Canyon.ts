@@ -74,10 +74,6 @@ export class Canyon extends Actor implements IActor {
 			ctx.strokeStyle = '#ff0000';
       		ctx.stroke();
 		
-			// 	//ctx.moveTo(30, 50);    // Move the pen to (30, 50)
-			// ctx.lineTo(this.position.x, this.position.y-10);
-			// ctx.fill();
-			// ctx.stroke();   
 			
 
 		}
