@@ -30,25 +30,23 @@ export class Canyon extends Actor implements IActor {
 		this.canyonSpeed = canyonSpeed;
 		
 
-		// // Car image
+		// TODO: Canyon image
 		// this.image = new Image();
 		// this.image.src = ferrariImg;
 	}
-	update(delta: number) {
-		// let newPos: Point = {
-		// 	x: this.position.x + this.canyonSpeed,
-		// 	y: this.position.y,
-		// };
-		// if (checkLimits(newPos)) {
-		// 	this.position = newPos;	
-		// }	
+	update(delta: number,sizeCanvasWidth:number,sizeCanvasHeight:number) {
+	
+		if(this.position.x > sizeCanvasWidth-this.canyonSize.w){
+				this.position.x = sizeCanvasWidth-this.canyonSize.w;	
+		}	
+		if(this.position.x <= 0){
+			this.position.x = 5;	
+	}	
 	}
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
 	
 		ctx.fillStyle = this.canyonColor;
 		ctx.fillRect(this.position.x,this.position.y, this.canyonSize.w, this.canyonSize.h);
-
-	
 		ctx.fill();
 		ctx.stroke();
 	}
