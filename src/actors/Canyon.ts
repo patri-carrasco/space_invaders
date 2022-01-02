@@ -8,14 +8,14 @@ import { convertToObject } from "typescript";
 
 type Size = { w: number; h: number };
 
+let canyonSpeed = 15;
+
 export class Canyon extends Actor implements IActor {
 	canyonSize: Size;
 	canyonColor: string;
-	//angle: number;
-	// angleSpeed: number;
+	
 	canyonSpeed: number;
-	// carAcceleration: number;
-	//image: HTMLImageElement;
+	
 	keyboardMap: KeyboardMap;
 	constructor(
 		initialPos: Point,
@@ -27,8 +27,8 @@ export class Canyon extends Actor implements IActor {
 		this.canyonSize = size;
 		this.canyonColor = "green";
 	
-		this.canyonSpeed = 15;
-		// this.canyonAcceleration = 0;
+		this.canyonSpeed = canyonSpeed;
+		
 
 		// // Car image
 		// this.image = new Image();
@@ -48,8 +48,7 @@ export class Canyon extends Actor implements IActor {
 		ctx.fillStyle = this.canyonColor;
 		ctx.fillRect(this.position.x,this.position.y, this.canyonSize.w, this.canyonSize.h);
 
-		//ctx.translate(this.position.x, this.position.y);
-		//ctx.drawImage(this.image, -50, -25, 100, 50);
+	
 		ctx.fill();
 		ctx.stroke();
 	}

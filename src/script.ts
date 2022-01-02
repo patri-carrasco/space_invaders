@@ -13,20 +13,25 @@ window.onload = () => {
 	ctx.fillStyle = "gray";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	let sizeCanvas = canvas.width
+	let sizeCanvasWidth= canvas.width
+	let sizeCanvasHeight= canvas.height
+	
 
 	let fps = new FPSViewer({x: 5, y: 15 });
 	let canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
 	let enemy = new Enemy({x:1,y:40})
+
+	//TODO: Hacer las barreras decentemente 3 por lo menos
+	let barrier = new Canyon({x:30, y:sizeCanvasHeight-250},MoveCanyon)
 	
-	let actors: Array<IActor> = [fps,canyon,enemy];
+	let actors: Array<IActor> = [fps,canyon,enemy,barrier];
 
 	let lastFrame = 0;
 	const render = (time: number) => {
 		let delta = (time - lastFrame) / 1000;
 
 		lastFrame = time;
-		actors.forEach((e) => e.update(delta,sizeCanvas));
+		actors.forEach((e) => e.update(delta,sizeCanvasWidth,sizeCanvasHeight));
 		
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = "gray";

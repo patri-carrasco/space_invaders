@@ -1,9 +1,9 @@
 import { Point } from "../types/Point";
-export const checkLimits = (position: Point,size :number,sizeCanvas:number) => {
+export const checkLimits = (position: Point,size :number,sizeCanvasWidth:number,sizeCanvasHeight:number) => {
 	if (
-		position.x < sizeCanvas-size && //1020
+		position.x < sizeCanvasWidth-size && //1020
 		position.x > 0 &&
-		position.y < 1024 &&
+		position.y < sizeCanvasHeight &&
 		position.y > 0
 	) {
 		return true;
