@@ -9,19 +9,18 @@ import { convertToObject } from "typescript";
 type Size = { w: number; h: number };
 
 
-
-export class Barriers extends Actor implements IActor {
+export class Barrier extends Actor implements IActor {
 	barrierSize: Size;
 	barrierColor: string;
-	
 	barrierSpeed: number;
 	
 	
 	constructor(
 		initialPos: Point,
 		
-		size: Size = { w: 150, h: 50 },
+		size: Size = { w: 105, h: 50 },
 	) {
+		
 		super(initialPos);
 		
 		this.barrierSize = size;

@@ -3,9 +3,10 @@ import { Actor, IActor } from "./actors/Actor";
 import {Canyon} from "./actors/Canyon"
 import {Enemy} from "./actors/Enemy"
 import { FPSViewer } from "./actors/FPSViewer";
-import {Barriers} from "./actors/Barriers"
+import {Barrier} from "./actors/Barrier"
 import { MoveCanyon } from "./utils/KeyboardMap";
 
+import {Game,createGame } from "./state/GameManager"
 
 window.onload = () => {
 	var canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -22,9 +23,11 @@ window.onload = () => {
 	let enemy = new Enemy({x:1,y:40})
 
 	//TODO: Hacer las barreras decentemente 3 por lo menos
-	let barrier = new Barriers({x:30, y:canvas.height-250})
+	let barrier = new Barrier({x:30, y:canvas.height-250})
 	
-	let actors: Array<IActor> = [fps,canyon,enemy,barrier];
+	createGame(canyon)
+
+	let actors: Array<IActor> = [fps,canyon,enemy,...Game.barriers];
 
 	let lastFrame = 0;
 	const render = (time: number) => {
