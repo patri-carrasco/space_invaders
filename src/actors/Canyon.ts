@@ -25,7 +25,7 @@ export class Canyon extends Actor implements IActor {
 		super(initialPos);
 		this.keyboardMap = keyboardMap;
 		this.canyonSize = size;
-		this.canyonColor = "green";
+		this.canyonColor = "white";
 	
 		this.canyonSpeed = canyonSpeed;
 		
