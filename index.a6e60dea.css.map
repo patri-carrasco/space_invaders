@@ -1,0 +1,1 @@
+{"mappings":"AAAA,KAKA,kBAAA,CADA,YAAA,CAFA,YAAA,CAIA,sBAAA,CAHA,QAAA,CAFA,WAMA,CAEA,OACA,oBACA","sources":["style.css"],"sourcesContent":["body {\n\twidth: 100vw;\n\theight: 100vh;\n\tmargin: 0;\n\tdisplay: flex;\n\talign-items: center;\n\tjustify-content: center;\n}\n\ncanvas {\n\tborder: 1px solid red;\n}"],"names":[],"version":3,"file":"index.a6e60dea.css.map"}
