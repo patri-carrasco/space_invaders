@@ -13,34 +13,46 @@ export class Enemy extends Actor implements IActor {
 	enemyColor: string;
 	
 	enemySpeed: number;
-	
+	direction: number;
 	constructor(
 		initialPos: Point,
 		
 		size: Size = { w: 50, h: 50 },
 	) {
-		super(initialPos);
 		
+		super(initialPos);
 		this.enemySize = size;
 		this.enemyColor = "red";
-	
-		this.enemySpeed = 1.5; // negativos
-		
-
+		this.direction= 1;
+		this.enemySpeed = 1.5*this.direction; 
 		// // Car image
 		// this.image = new Image();
 		// this.image.src = ferrariImg;
-		console.log(initialPos,this.position.x+20)
 	}
 	update(delta: number) {
+		
 		let newPos: Point = {
 			x: this.position.x + this.enemySpeed,
 			y: this.position.y,
+			
 		};
+		console.log(this.position.x)
 		if (checkLimits(newPos)) {
-			this.position = newPos;	
-            
-		}	
+			this.position = newPos;	            
+		}
+
+		if(this.position.x >968){
+			this.direction = -1
+			this.enemySpeed = 1.5*this.direction;
+			this.position.y+=50;
+		}
+		if(this.position.x <=1){
+		
+			this.direction = 1
+			this.enemySpeed = 1.5*this.direction;
+			this.position.y+=50;
+			console.log("entra dir pos",this.position.y)
+		}
 	}
 	draw(delta: number, ctx: CanvasRenderingContext2D) {
 	

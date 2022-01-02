@@ -33,7 +33,6 @@ export class Canyon extends Actor implements IActor {
 		// // Car image
 		// this.image = new Image();
 		// this.image.src = ferrariImg;
-		console.log(initialPos,this.position.x+20)
 	}
 	update(delta: number) {
 		// let newPos: Point = {
