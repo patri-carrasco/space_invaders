@@ -1,7 +1,7 @@
 {
   "name": "space_invaders",
   "version": "1.0.0",
-  "main": "index.js",
+
   "repository": "git@github.com:patri-carrasco/space_invaders.git",
   "author": "Patricia Carrasco <patri.carrasco@gmail.com>",
   "license": "MIT",
@@ -15,7 +15,7 @@
    
     "dev": "parcel index.html",
     "build": "yarn run clean && yarn run ghbuild", 
-    "ghbuild": "parcel build --dist-dir docs --public-url /dungeon index.html", 
+    "ghbuild": "parcel build --dist-dir docs --public-url /space_invaders index.html", 
     "clean": "rimraf docs dist" 
   },
   "devDependencies": {
