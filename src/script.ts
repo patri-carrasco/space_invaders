@@ -13,11 +13,11 @@ window.onload = () => {
 	ctx.fillStyle = "gray";
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-	
+	let sizeCanvas = canvas.width
 
 	let fps = new FPSViewer({x: 5, y: 15 });
 	let canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
-	let enemy = new Enemy({x:40,y:40})
+	let enemy = new Enemy({x:1,y:40})
 	
 	let actors: Array<IActor> = [fps,canyon,enemy];
 
@@ -26,7 +26,7 @@ window.onload = () => {
 		let delta = (time - lastFrame) / 1000;
 
 		lastFrame = time;
-		actors.forEach((e) => e.update(delta));
+		actors.forEach((e) => e.update(delta,sizeCanvas));
 		
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = "gray";
