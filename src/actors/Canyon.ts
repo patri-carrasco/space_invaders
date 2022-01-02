@@ -1,7 +1,7 @@
 import { Actor, IActor } from "./Actor";
 import { Point } from "../types/Point";
 
-import { checkLimits } from "../utils/checkLimits";
+import { checkLimits } from "../utils/CheckLimits";
 import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
 import { convertToObject } from "typescript";
 //const ferrariImg = require("../assets/ferrari.png");
