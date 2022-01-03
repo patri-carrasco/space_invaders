@@ -27,13 +27,12 @@ export class Enemy extends Actor implements IActor {
 		this.enemyColor = "red";
 		this.direction= 1;
 		this.enemySpeed = speedEnemy*this.direction; 
-
+		console.log(initialPos)
 		// TODO: imagen enemy
 		// this.image = new Image();
 		// this.image.src = ferrariImg;
 	}
 	update(delta: number,sizeCanvasWidth:number,sizeCanvasHeight:number) {
-		
 		
 		let newPos: Point = {
 			x: this.position.x + this.enemySpeed,

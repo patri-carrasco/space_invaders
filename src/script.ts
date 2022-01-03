@@ -20,15 +20,17 @@ window.onload = () => {
 
 	let fps = new FPSViewer({x: 5, y: 15 });
 	let canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
-	let enemy = new Enemy({x:1,y:40})
+	//let enemy = new Enemy({x:1,y:40})
 
 	//TODO: Hacer las barreras decentemente 3 por lo menos
-	let barrier = new Barrier({x:30, y:canvas.height-250})
+	//let barrier = new Barrier({x:30, y:canvas.height-250})
 	
-	createGame(canyon)
+	createGame()
 
-	let actors: Array<IActor> = [fps,canyon,enemy,...Game.barriers];
-
+	let enemyArray = [] 
+	Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
+	let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers];
+	
 	let lastFrame = 0;
 	const render = (time: number) => {
 		let delta = (time - lastFrame) / 1000;
