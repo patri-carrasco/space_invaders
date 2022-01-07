@@ -2,11 +2,15 @@ import { Actor, IActor } from "./actors/Actor";
 
 import {Canyon} from "./actors/Canyon"
 import {Enemy} from "./actors/Enemy"
+
+import {Bullet} from "./actors/Bullet"
 import { FPSViewer } from "./actors/FPSViewer";
 import {Barrier} from "./actors/Barrier"
 import { MoveCanyon } from "./utils/KeyboardMap";
 
 import {Game,createGame } from "./state/GameManager"
+import { any } from "core-js/fn/promise";
+import { convertToObject } from "typescript";
 
 window.onload = () => {
 	var canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -22,28 +26,39 @@ window.onload = () => {
 	let canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
 	//let enemy = new Enemy({x:1,y:40})
 
-	//TODO: Hacer las barreras decentemente 3 por lo menos
-	//let barrier = new Barrier({x:30, y:canvas.height-250})
+	//let bullet = new Bullet ({x:100,y:100},{w:100,h:100})
 	
 	createGame()
 
 	let enemyArray = [] 
 	Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
-	let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers];
+	let bulletArray = [] 
 	
+	//let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers,...canyon.bulletCanyonArr];
+	let actors: Array<IActor> = [fps,canyon,...canyon.bulletCanyonArr];
 	let lastFrame = 0;
+
 	const render = (time: number) => {
 		let delta = (time - lastFrame) / 1000;
 
 		lastFrame = time;
-		actors.forEach((e) => e.update(delta,canvas.width,canvas.height));
+		actors.forEach((e) => {
+			e.update(delta,canvas.width,canvas.height)
+			//console.log("scripy",e)
+		});
+	
+		// canyon.bulletCanyonArr.forEach(e =>{
+		// 	console.log(e,e.position)
+		// } )
 		
+	
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.fillStyle = "gray";
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 		actors.forEach((e) => {
 			//ctx.save();
+			
 			e.draw(delta, ctx);
 	
 			//ctx.restore();
@@ -58,16 +73,12 @@ window.onload = () => {
 		actors.forEach((actor) => {
 			if (actor.keyboard_event_down) {
 				actor.keyboard_event_down(e.key,ctx);
+				if (e.key == " "){
+					console.log("Space",e.key)
+				}
 				
 			}
 		});
 	});
-	// document.body.addEventListener("keyup", (e) => {
-	// 	// console.log(e.key);
-	// 	actors.forEach((actor) => {
-	// 		if (actor.keyboard_event_up) {
-	// 			actor.keyboard_event_up(e.key);
-	// 		}
-	// 	});
-	// });
+
 };

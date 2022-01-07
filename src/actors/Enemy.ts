@@ -13,7 +13,6 @@ let speedEnemy = 2;
 export class Enemy extends Actor implements IActor {
 	enemySize: Size;
 	enemyColor: string;
-	
 	enemySpeed: number;
 	direction: number;
 	constructor(

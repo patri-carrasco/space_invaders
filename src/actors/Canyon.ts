@@ -1,9 +1,10 @@
 import { Actor, IActor } from "./Actor";
 import { Point } from "../types/Point";
+//import { drawShoot } from "./Shoot";
+import {Bullet} from "./Bullet"
 
-import { checkLimits } from "../utils/CheckLimits";
 import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
-import { convertToObject } from "typescript";
+
 //const ferrariImg = require("../assets/ferrari.png");
 
 type Size = { w: number; h: number };
@@ -17,6 +18,9 @@ export class Canyon extends Actor implements IActor {
 	canyonSpeed: number;
 	
 	keyboardMap: KeyboardMap;
+	isCanyon:Boolean;
+	bulletCanyonArr: Bullet[]
+	
 	constructor(
 		initialPos: Point,
 		keyboardMap: KeyboardMap,
@@ -28,6 +32,8 @@ export class Canyon extends Actor implements IActor {
 		this.canyonColor = "white";
 	
 		this.canyonSpeed = canyonSpeed;
+		this.isCanyon= true;
+		this.bulletCanyonArr =[]
 		
 
 		// TODO: Canyon image
@@ -52,35 +58,22 @@ export class Canyon extends Actor implements IActor {
 	}
 	keyboard_event_down(key: string, ctx: CanvasRenderingContext2D) {
 		let tecla = this.keyboardMap[key];
+		console.log(tecla)
 		if (tecla == CanyonKey.LEFT) {
 			this.position.x -= this.canyonSpeed
-			
 		} else if (tecla == CanyonKey.RIGHT) {
-			
-			//this.canyonSpeed += 4;
 			this.position.x += this.canyonSpeed
-			
         } else if (tecla == CanyonKey.SPACE){
-		 
-			this.canyonSpeed = 0;
 			//TODO: función disparo
+			//drawShoot(ctx,{x:this.position.x,y:this.position.y},this.isCanyon)
+			console.log(tecla,"canyon",this.position.x,this.position.y)
+			this.bulletCanyonArr.push(new Bullet({x:this.position.x,y:this.position.y},{w:10,h:10}))
+			//console.log("space",this.bulletCanyonArr[0].position.y)
 
-			ctx.beginPath();  
-			ctx.moveTo(this.position.x, this.position.y);    
-			ctx.lineTo(this.position.x, 900);  
-			ctx.strokeStyle = '#ff0000';
-      		ctx.stroke();
 		
 			
 
 		}
 	}
-	// keyboard_event_up(key: string) {
-	// 	let tecla = this.keyboardMap[key];
-	// 	if (tecla == Carkey.UP) {
-	// 		this.carAcceleration = 0;
-	// 	} else if (tecla == Carkey.DOWN) {
-	// 		this.carAcceleration = 0;
-	// 	}
-	// }
+	
 }
