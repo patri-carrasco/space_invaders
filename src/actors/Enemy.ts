@@ -7,7 +7,7 @@ import { checkLimits } from "../utils/CheckLimits";
 
 type Size = { w: number; h: number };
 // Aquí podemos cambiar la velocidad del enemigo.
-let speedEnemy = 6;
+let speedEnemy = 2;
 
 
 export class Enemy extends Actor implements IActor {
@@ -27,7 +27,7 @@ export class Enemy extends Actor implements IActor {
 		this.enemyColor = "red";
 		this.direction= 1;
 		this.enemySpeed = speedEnemy*this.direction; 
-		console.log(initialPos)
+	
 		// TODO: imagen enemy
 		// this.image = new Image();
 		// this.image.src = ferrariImg;

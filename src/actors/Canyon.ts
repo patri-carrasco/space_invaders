@@ -61,7 +61,7 @@ export class Canyon extends Actor implements IActor {
 			this.position.x += this.canyonSpeed
 			
         } else if (tecla == CanyonKey.SPACE){
-			console.log(tecla,CanyonKey.SPACE)
+		 
 			this.canyonSpeed = 0;
 			//TODO: función disparo
 

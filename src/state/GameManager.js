@@ -5,15 +5,8 @@ import { Enemy} from "../actors/Enemy"
 
 class GameManager{
   
-    // barriers: Barrier[];
-    // enemies:Enemy[];
-    // matrixEnemy: Enemy[]
-    // size: number;
-    // sep: number;
     constructor(actor){
-        // let barriers: Barrier[]= []
-        // let enemies : Enemy[]= []
-        // let matrixEnemy:Enemy[]= []
+
         let num = 5;
         let size = 105;
         let sep = 200;
@@ -29,27 +22,12 @@ class GameManager{
             
         }
         this.barriers = barriers;
-        // for(let i=0;i<=col;i++){
-        //     matrixEnemy[i] = []
-        //     for(let j=0;j<=row;j++)
-        //     {
-        //         if (i % 2 === 0) {
-        //             matrixEnemy[i][j]= j % 2 === 0 ? 1 : 0;
-        //         } else {
-        //             matrixEnemy[i][j]= j % 2 !== 0 ? 1 : 0;
-        //         }
-        //     }
-        // }
+      
         for(let i=0;i<=col;i++){
             matrixEnemy[i] = [];
             for(let j=0;j<=row;j++)
             {
-            //    if (j % 2 === 0) {
-            //         matrixEnemy[i][j]=new Enemy({x:i * 60 +1,y:j * 60 + 120});
-                    
-            //     } else {
                     matrixEnemy[i][j]= new Enemy({x:i * 60 +1,y:j * 60 + 120});
-                // }
             }
         }
         this.matrixEnemy=matrixEnemy;
