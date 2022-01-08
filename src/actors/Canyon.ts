@@ -1,9 +1,11 @@
 import { Actor, IActor } from "./Actor";
 import { Point } from "../types/Point";
-//import { drawShoot } from "./Shoot";
+
 import {Bullet} from "./Bullet"
 
+import { shootBullet } from "../state/GameManager";
 import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
+import { shootArray } from "../utils/Shoot";
 
 //const ferrariImg = require("../assets/ferrari.png");
 
@@ -19,8 +21,9 @@ export class Canyon extends Actor implements IActor {
 	
 	keyboardMap: KeyboardMap;
 	isCanyon:Boolean;
+	bullet:Bullet
 	bulletCanyonArr: Bullet[]
-	
+	positionArray:Point[]
 	constructor(
 		initialPos: Point,
 		keyboardMap: KeyboardMap,
@@ -34,8 +37,8 @@ export class Canyon extends Actor implements IActor {
 		this.canyonSpeed = canyonSpeed;
 		this.isCanyon= true;
 		this.bulletCanyonArr =[]
+		this.positionArray=[]
 		
-
 		// TODO: Canyon image
 		// this.image = new Image();
 		// this.image.src = ferrariImg;
@@ -49,7 +52,7 @@ export class Canyon extends Actor implements IActor {
 			this.position.x = 5;	
 	}	
 	}
-	draw(delta: number, ctx: CanvasRenderingContext2D) {
+	draw( ctx: CanvasRenderingContext2D) {
 	
 		ctx.fillStyle = this.canyonColor;
 		ctx.fillRect(this.position.x,this.position.y, this.canyonSize.w, this.canyonSize.h);
@@ -58,7 +61,7 @@ export class Canyon extends Actor implements IActor {
 	}
 	keyboard_event_down(key: string, ctx: CanvasRenderingContext2D) {
 		let tecla = this.keyboardMap[key];
-		console.log(tecla)
+		
 		if (tecla == CanyonKey.LEFT) {
 			this.position.x -= this.canyonSpeed
 		} else if (tecla == CanyonKey.RIGHT) {
@@ -66,11 +69,12 @@ export class Canyon extends Actor implements IActor {
         } else if (tecla == CanyonKey.SPACE){
 			//TODO: función disparo
 			//drawShoot(ctx,{x:this.position.x,y:this.position.y},this.isCanyon)
-			console.log(tecla,"canyon",this.position.x,this.position.y)
-			this.bulletCanyonArr.push(new Bullet({x:this.position.x,y:this.position.y},{w:10,h:10}))
-			//console.log("space",this.bulletCanyonArr[0].position.y)
-
-		
+			
+			//this.bulletCanyonArr.push(new Bullet({x:this.position.x,y:this.position.y},{w:10,h:10}))
+			// this.positionArray.push({x:this.position.x,y:this.position.y})
+			// console.log(this.positionArray)
+			
+			shootBullet(this.position);
 			
 
 		}

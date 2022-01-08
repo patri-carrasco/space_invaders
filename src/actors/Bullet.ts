@@ -21,7 +21,7 @@ export class Bullet extends Actor implements IActor {
 	) {
 		
 		super(initialPos);
-		console.log(initialPos)
+		
 		this.bulletSize = size;
 		this.bulletColor = "white"
         this.bulletSpeed = 10;
@@ -30,17 +30,20 @@ export class Bullet extends Actor implements IActor {
 		// this.image = new Image();
 		// this.image.src = ferrariImg;
 	}
-	update(delta: number,sizeCanvasWidth:number,sizeCanvasHeight:number) {
-       console.log(this.position.x)
+	update() {
+       
         let newPos: Point = {
 			x: this.position.x ,
 			y: this.position.y - this.bulletSpeed,
 		};
         this.position = newPos;	 
+		
+	
+		
 	
 	}
-	draw(delta: number, ctx: CanvasRenderingContext2D,position?:Point,isCanyon?:Boolean) {
-        console.log(this.position.y)
+	draw(ctx: CanvasRenderingContext2D,delta?: number,position?:Point,isCanyon?:Boolean) {
+        
 		ctx.fillStyle = this.bulletColor;
 		ctx.fillRect(this.position.x,this.position.y, this.bulletSize.w, this.bulletSize.h);
 		ctx.fill();

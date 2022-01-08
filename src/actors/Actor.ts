@@ -5,7 +5,7 @@ export interface IActor {
 	update: (delta: number,sizeCanvas:number,sizeCanvasHeight:number) => void;
 	keyboard_event_down?: (key: string, ctx: CanvasRenderingContext2D) => void;
 	keyboard_event_up?: (key: string) => void;
-	draw: (delta: number, ctx: CanvasRenderingContext2D) => void;
+	draw: (ctx: CanvasRenderingContext2D,delta:number) => void;
 }
 
 export class Actor implements IActor {
@@ -14,6 +14,6 @@ export class Actor implements IActor {
 		this.position = position;
 	}
 	update(delta: number,sizeCanvas:number,sizeCanvasHeight:number) { }
-	draw(delta: number, ctx: CanvasRenderingContext2D) { }
+	draw(ctx: CanvasRenderingContext2D,delta: number,) { }
 	keyboard_event(key: string,ctx: CanvasRenderingContext2D) { }
 }

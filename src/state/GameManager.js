@@ -1,11 +1,12 @@
-import { IActor } from "../actors/Actor";
+import { Actor, IActor } from "../actors/Actor";
 import { Barrier } from "../actors/Barrier";
 import { Enemy} from "../actors/Enemy"
 import {Bullet} from "../actors/Bullet"
+import {Canyon} from "../actors/Canyon"
 
 class GameManager{
   
-    constructor(actor){
+    constructor(bullets){
 
         let num = 5;
         let size = 105;
@@ -14,7 +15,7 @@ class GameManager{
         let row = 5;
         let matrixEnemy = []
         let barriers = []
-        let bullet = []
+        //let canyon= actor
         for(let i=0; i<=num;i++ ){
            
             barriers.push(
@@ -36,15 +37,22 @@ class GameManager{
         for(let i=0;i<=3;i++){
             
         }
-     
+            
     }
    
 }
 
 export let Game;
 
-export const createGame = ()=>{
-    Game= new GameManager()
+export const createGame = (bullets)=>{
+    Game= new GameManager(bullets)
+}
+export const shootBullet = (position)=>{
+  
+    console.log("game",position)
+    let bullet = new Bullet(position)
+    
+    console.log("game",bullet)
 }
 
 

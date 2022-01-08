@@ -58,7 +58,7 @@ export class Enemy extends Actor implements IActor {
 			}
 		}
 	}
-	draw(delta: number, ctx: CanvasRenderingContext2D) {
+	draw(ctx: CanvasRenderingContext2D,delta: number ) {
 	
 		ctx.fillStyle = this.enemyColor;
 		ctx.fillRect(this.position.x,this.position.y, this.enemySize.w, this.enemySize.h);

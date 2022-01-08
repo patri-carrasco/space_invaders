@@ -33,7 +33,7 @@ export class Barrier extends Actor implements IActor {
 	update(delta: number,sizeCanvasWidth:number,sizeCanvasHeight:number) {
 		
 	}
-	draw(delta: number, ctx: CanvasRenderingContext2D) {
+	draw( ctx: CanvasRenderingContext2D,delta?: number) {
 	
 		ctx.fillStyle = this.barrierColor;
 		ctx.fillRect(this.position.x,this.position.y, this.barrierSize.w, this.barrierSize.h);
