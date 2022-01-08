@@ -9,7 +9,8 @@ import {Barrier} from "./actors/Barrier"
 import { MoveCanyon } from "./utils/KeyboardMap";
 
 import {Game,createGame } from "./state/GameManager"
-import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
+import{resetGame} from "./utils/ResetGame"
+
 
 
 window.onload = () => {
@@ -55,18 +56,7 @@ window.onload = () => {
 			e.update(delta,canvas.width,canvas.height)
 			if(e.gameOver=='Enter'){
 			
-				fps = new FPSViewer({x: 5, y: 15 });
-				canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
-				bullets = []
-				for (let i = 0; i<100; i++) {
-					bullets.push( new Bullet ({x:30,y:0},{w:10,h:10}))
-				}
-				let currentShoot = 0
-
-				createGame(bullets)
-				let enemyArray = [] 
-				Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
-				actors = [fps,canyon,...enemyArray,...bullets];
+				resetGame();
 			}
 			
 		});
@@ -106,33 +96,12 @@ window.onload = () => {
 		});
 
 	});
-	window.requestAnimationFrame(render);
-	// actors.forEach((actor)=>{
-	// 	console.log("hace algo")
-	// 	if(actor.gameOver=='Enter'){
-	// 		console.log(actor.gameOver,"perdistetttttttttt")
-	// 	}
-	//document.getElementById('msg').innerHTML=" Please press enter to restart the game.";
+	// window.requestAnimationFrame(render);
+
 	document.body.addEventListener("keydown", (e) => {
-		
-		
-			
+					
 			if(e.key==='Enter'){
-				fps = new FPSViewer({x: 5, y: 15 });
-				canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
-				bullets = []
-				for (let i = 0; i<100; i++) {
-					bullets.push( new Bullet ({x:30,y:0},{w:10,h:10}))
-				}
-				let currentShoot = 0
-
-
-				createGame(bullets)
-
-				let enemyArray = [] 
-
-				Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
-				actors = [fps,canyon,...enemyArray,...bullets];
+				resetGame()
 			}
 			
 	});
