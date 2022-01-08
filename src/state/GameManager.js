@@ -1,8 +1,7 @@
-import { Actor, IActor } from "../actors/Actor";
+
 import { Barrier } from "../actors/Barrier";
 import { Enemy} from "../actors/Enemy"
-import {Bullet} from "../actors/Bullet"
-import {Canyon} from "../actors/Canyon"
+
 
 class GameManager{
   
@@ -15,7 +14,7 @@ class GameManager{
         let row = 5;
         let matrixEnemy = []
         let barriers = []
-        //let canyon= actor
+        
         for(let i=0; i<=num;i++ ){
            
             barriers.push(
@@ -34,11 +33,12 @@ class GameManager{
         }
         this.matrixEnemy=matrixEnemy;
         
-        for(let i=0;i<=3;i++){
-            
-        }
+        // for(let i=0;i<=3;i++){
+        //     console.log(bullets[i])
+        // }
             
     }
+  
    
 }
 
@@ -47,12 +47,6 @@ export let Game;
 export const createGame = (bullets)=>{
     Game= new GameManager(bullets)
 }
-export const shootBullet = (position)=>{
-  
 
-    let bullet = new Bullet(position)
-  
-}
-
-
+ 
 

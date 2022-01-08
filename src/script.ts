@@ -8,9 +8,9 @@ import { FPSViewer } from "./actors/FPSViewer";
 import {Barrier} from "./actors/Barrier"
 import { MoveCanyon } from "./utils/KeyboardMap";
 
-import {Game,createGame, shootBullet } from "./state/GameManager"
+import {Game,createGame } from "./state/GameManager"
+import { collapseTextChangeRangesAcrossMultipleVersions } from "typescript";
 
-import { convertToObject } from "typescript";
 
 window.onload = () => {
 	var canvas = document.getElementById("canvas") as HTMLCanvasElement;
@@ -39,21 +39,13 @@ window.onload = () => {
 
 	Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
 
-	// canyon.bulletCanyonArr.forEach(e=>{
-	// 	bulletArry.(e)
-	// 	console.log(e)
-	// })
-
-
-	// console.log("bullet",bulletArry.position)
 	//let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers,...bullets];
 	let actors: Array<IActor> = [fps,canyon,...enemyArray,...bullets];
 	
-
-
 	let lastFrame = 0;
 
 	const render = (time: number) => {
+		
 		let delta = (time - lastFrame) / 1000;
 
 		lastFrame = time;
@@ -61,7 +53,22 @@ window.onload = () => {
 		actors.forEach((e) => {
 			//console.log("bullet",e)
 			e.update(delta,canvas.width,canvas.height)
-			//console.log("scripy",e)
+			if(e.gameOver=='Enter'){
+			
+				fps = new FPSViewer({x: 5, y: 15 });
+				canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
+				bullets = []
+				for (let i = 0; i<100; i++) {
+					bullets.push( new Bullet ({x:30,y:0},{w:10,h:10}))
+				}
+				let currentShoot = 0
+
+				createGame(bullets)
+				let enemyArray = [] 
+				Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
+				actors = [fps,canyon,...enemyArray,...bullets];
+			}
+			
 		});
 	
 		
@@ -76,6 +83,7 @@ window.onload = () => {
 	
 			//ctx.restore();
 		});
+		
 		window.requestAnimationFrame(render);
 	};
 
@@ -86,11 +94,46 @@ window.onload = () => {
 		actors.forEach((actor) => {
 			if (actor.keyboard_event_down) {
 				actor.keyboard_event_down(e.key,ctx);
+			
 				if (e.key == " "){
 					bullets[currentShoot].position=canyon.position
 					currentShoot = currentShoot < 100 ? currentShoot + 1 : 0
+					
+				
 				}
 			}
+			
 		});
+
+	});
+	window.requestAnimationFrame(render);
+	// actors.forEach((actor)=>{
+	// 	console.log("hace algo")
+	// 	if(actor.gameOver=='Enter'){
+	// 		console.log(actor.gameOver,"perdistetttttttttt")
+	// 	}
+	//document.getElementById('msg').innerHTML=" Please press enter to restart the game.";
+	document.body.addEventListener("keydown", (e) => {
+		
+		
+			
+			if(e.key==='Enter'){
+				fps = new FPSViewer({x: 5, y: 15 });
+				canyon = new Canyon({ x: 30, y: 965},MoveCanyon); 
+				bullets = []
+				for (let i = 0; i<100; i++) {
+					bullets.push( new Bullet ({x:30,y:0},{w:10,h:10}))
+				}
+				let currentShoot = 0
+
+
+				createGame(bullets)
+
+				let enemyArray = [] 
+
+				Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
+				actors = [fps,canyon,...enemyArray,...bullets];
+			}
+			
 	});
 };

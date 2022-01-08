@@ -1,6 +1,7 @@
 import { Actor, IActor } from "./Actor";
 import { Point } from "../types/Point";
 import { checkLimits } from "../utils/CheckLimits";
+
 //import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
 
 //const ferrariImg = require("../assets/ferrari.png");
@@ -15,6 +16,7 @@ export class Enemy extends Actor implements IActor {
 	enemyColor: string;
 	enemySpeed: number;
 	direction: number;
+	gameOver: String;
 	constructor(
 		initialPos: Point,
 		
@@ -26,6 +28,7 @@ export class Enemy extends Actor implements IActor {
 		this.enemyColor = "red";
 		this.direction= 1;
 		this.enemySpeed = speedEnemy*this.direction; 
+		this.gameOver = " "
 	
 		// TODO: imagen enemy
 		// this.image = new Image();
@@ -49,14 +52,17 @@ export class Enemy extends Actor implements IActor {
 			this.position.y+=50;
 		
 			//TODO: Aquí iría una game over si el enemigo llega a la altura de las barreras
-			//TODO: Podría poner GAMER OVER, pulse ENTER para empezar
+			
 			if(this.position.y>=sizeCanvasHeight-300){
-				console.log("Perdiste")
+			
 				this.position.x = 1
 				this.position.y = 40
-
+				this.gameOver = 'Enter'
+				
 			}
 		}
+		
+
 	}
 	draw(ctx: CanvasRenderingContext2D,delta: number ) {
 	

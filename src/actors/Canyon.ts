@@ -3,9 +3,9 @@ import { Point } from "../types/Point";
 
 import {Bullet} from "./Bullet"
 
-import { shootBullet } from "../state/GameManager";
+
 import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
-import { shootArray } from "../utils/Shoot";
+
 
 //const ferrariImg = require("../assets/ferrari.png");
 
@@ -74,7 +74,7 @@ export class Canyon extends Actor implements IActor {
 			// this.positionArray.push({x:this.position.x,y:this.position.y})
 			// console.log(this.positionArray)
 			
-			shootBullet(this.position);
+			//shootBullet(this.position);
 			
 
 		}

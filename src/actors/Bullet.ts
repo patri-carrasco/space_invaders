@@ -37,9 +37,6 @@ export class Bullet extends Actor implements IActor {
 			y: this.position.y - this.bulletSpeed,
 		};
         this.position = newPos;	 
-		
-	
-		
 	
 	}
 	draw(ctx: CanvasRenderingContext2D,delta?: number,position?:Point,isCanyon?:Boolean) {
