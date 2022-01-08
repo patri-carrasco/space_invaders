@@ -37,6 +37,9 @@ class GameManager{
         //     console.log(bullets[i])
         // }
             
+        // bullets.forEach(e => {
+        //     console.log(e)
+        // });
     }
   
    
