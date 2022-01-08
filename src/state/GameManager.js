@@ -49,10 +49,9 @@ export const createGame = (bullets)=>{
 }
 export const shootBullet = (position)=>{
   
-    console.log("game",position)
+
     let bullet = new Bullet(position)
-    
-    console.log("game",bullet)
+  
 }
 
 

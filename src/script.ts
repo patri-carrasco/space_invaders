@@ -46,8 +46,9 @@ window.onload = () => {
 
 
 	// console.log("bullet",bulletArry.position)
-	//let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers,...canyon.bulletCanyonArr];
-	let actors: Array<IActor> = [fps,canyon,...bullets];
+	//let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers,...bullets];
+	let actors: Array<IActor> = [fps,canyon,...enemyArray,...bullets];
+	
 
 
 	let lastFrame = 0;
