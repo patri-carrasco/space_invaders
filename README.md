@@ -8,18 +8,15 @@ Las colisiones entre las balas y los enemigos tienen su complicación es lo que 
 # 2 ¿Cómo se juega?
 
 
-![img](/public/space-invaders-screenshot-points-sm.jpg)
+![img](/public/img/game.png)
 
-El objetivo del juego es, básicamente, disparar a los invasores con tu base láser `(D)` evitando sus disparos y previniendo una invasión. 
+El objetivo del juego es, básicamente, disparar a los invasores con tu cañón evitando sus disparos y previniendo una invasión. 
 
-Conseguir una puntuación alta `(F)` es otro objetivo y uno que debe priorizarse frente a su supervivencia continua. 
+Conseguir una puntuación alta es otro objetivo y uno que debe priorizarse frente a su supervivencia continua. 
 
-Cada pantalla de juego comienza con seis filas de 6 invasores. Las 2 filas inferiores obtienen 10 puntos por invasor grande `(A)`, las 2 filas del medio 20 puntos por cada invasor mediano `(B)` y la fila superior obtiene 30 puntos por cada invasor pequeño `(C)`. 
+Cada pantalla de juego comienza con seis filas de 6 invasores. Las 2 filas inferiores obtienen 10 puntos por invasor grande, las 2 filas del medio 20 puntos por cada invasor mediano y las  dos filas superior obtiene 30 puntos por cada invasor pequeño  
 
-Esto hace que cada pantalla valga un total de 990 puntos. La puntuación de cada pantalla se puede aumentar drásticamente mediante la destrucción táctica de las naves espaciales `(G)` de valor "misterioso" que vuelan con frecuencia de un lado a otro de la pantalla. Se puede buscar un santuario temporal debajo de los 4 refugios base `(E)`.
-
-
-Para empezar el juego se pulsa la tecla `Enter`. El cañón se mueve a la derecha y a la izquierda con las feclas de la derecha e izquierda. Y se dispara con la barra espaciadora.
+Para empezar el juego se pulsa la tecla `Enter`. El cañón se mueve a la derecha y a la izquierda con las feclas de la derecha e izquierda. Y dispara con la barra espaciadora.
 
 # 3 Tecnologías usadas
 - Javascript
@@ -31,16 +28,31 @@ Para empezar el juego se pulsa la tecla `Enter`. El cañón se mueve a la derech
 - Eslint
 - Yarn
 
-# 4 Insalación del juego
+# 4 Estructura del proyecto
+- `github/workflows`: con esta carpeta compilamos los archivos en `typescript` para poder subirlo a githupages.
+- `src`: 
+    - `actors` que incluye a los actores del juego
+        - `Actor.ts` clase principal de la cual heredan el resto de actores.
+        - `Barrier.ts` creamos las barreras verdes del juego
+        - `Bullet.ts` las balas del cañón
+        - `Canyon.ts` la clase canyon con la que creamos al actor principal que es el cañón.
+        - `Enemy.ts` con esta clase creamos a los enemigos.
+        - `FPSViewer.ts` con esta clase vemos los frame por segundo.
+    - `state` donde tenemos el `GameManager` que controla parte del juego
+    - `types` donde declaramos un tipo de datos que usamos en los actores del juego
+    - `utils` donde tenemos funciones necesarias para que se pueda jugar al juego.
+
+
+# 5 Insalación del juego
 En la consola usar `yarn install` para instalar todas las dependencias.
 
 Y para ejecutar el juego `yarn run dev`
 
-# 5 Para jugar online
+# 6 Para jugar online
 Para jugar en online ir a: https://patri-carrasco.github.io/space_invaders/
 
 
-# 6 Agradecimientos
+# 7 Agradecimientos
 A mi marido por aconsejarme a hacer este bootcamp y cuidar de los niños mientras yo tengo que estudiar. 
 
 A Marcos por tener la santa paciencia de enseñarme todo esto. 
@@ -52,7 +64,7 @@ A Marc por darme la oportunidad de hacer este bootcamp.
 A los compañeros de clase por estar en esta clase porque sin ellos este bootcamp no sería lo mismo.
 
 
-# 7 Recusros 
+# 8 Recusros 
 - <https://www.classicgaming.cc/classics/space-invaders/play-guide>
 - <https://developer.mozilla.org/es/docs/Web/JavaScript>
 - Apuntes de clases, si los quieres tener ve a: https://www.corecode.school/ y apúntante a un bootcamp.
