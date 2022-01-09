@@ -6,8 +6,7 @@ import {Bullet} from "./Bullet"
 
 import { CanyonKey, KeyboardMap } from "../utils/KeyboardMap";
 
-
-//const ferrariImg = require("../assets/ferrari.png");
+//const canyonImg = require('../public/img/canyon.png');
 
 type Size = { w: number; h: number };
 
@@ -39,9 +38,9 @@ export class Canyon extends Actor implements IActor {
 		this.bulletCanyonArr =[]
 		this.positionArray=[]
 		
-		// TODO: Canyon image
+		// Canyon image
 		// this.image = new Image();
-		// this.image.src = ferrariImg;
+		// this.image.src = canyonImg;
 	}
 	update(delta: number,sizeCanvasWidth:number,sizeCanvasHeight:number) {
 	

@@ -68,3 +68,9 @@ A los compañeros de clase por estar en esta clase porque sin ellos este bootcam
 - <https://www.classicgaming.cc/classics/space-invaders/play-guide>
 - <https://developer.mozilla.org/es/docs/Web/JavaScript>
 - Apuntes de clases, si los quieres tener ve a: https://www.corecode.school/ y apúntante a un bootcamp.
+
+# 9 Cosas pendientes
+- Disparos de los enemigos.
+- Poner un marcador con el score.
+- Poner imágenes a los actores.
+- Poner música.
