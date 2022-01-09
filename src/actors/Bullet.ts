@@ -1,8 +1,6 @@
 import { Actor, IActor } from "./Actor";
 import { Point } from "../types/Point";
 
-import { checkLimits } from "../utils/CheckLimits";
-
 //const ferrariImg = require("../assets/ferrari.png");
 
 type Size = { w: number; h: number };
@@ -13,6 +11,7 @@ export class Bullet extends Actor implements IActor {
 	bulletColor: string;
 	bulletSpeed: number;
 	position:Point
+	hit:boolean;
 	
 	constructor(
 		initialPos: Point,
@@ -25,6 +24,7 @@ export class Bullet extends Actor implements IActor {
 		this.bulletSize = size;
 		this.bulletColor = "white"
         this.bulletSpeed = 10;
+		this.hit= true
 
 		// TODO: Barrier image
 		// this.image = new Image();

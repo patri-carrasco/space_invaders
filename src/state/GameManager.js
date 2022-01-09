@@ -1,6 +1,9 @@
 
+import { isConstructorDeclaration } from "typescript";
 import { Barrier } from "../actors/Barrier";
 import { Enemy} from "../actors/Enemy"
+import { Point} from "../types/Point"
+import {Bullet} from "../actors/Bullet"
 
 
 class GameManager{
@@ -13,7 +16,9 @@ class GameManager{
         let col= 5;
         let row = 5;
         let matrixEnemy = []
+        let arrbullets = bullets
         let barriers = []
+        
         
         for(let i=0; i<=num;i++ ){
            
@@ -28,20 +33,14 @@ class GameManager{
             matrixEnemy[i] = [];
             for(let j=0;j<=row;j++)
             {
-                    matrixEnemy[i][j]= new Enemy({x:i * 60 +1,y:j * 60 + 120});
+                    matrixEnemy[i][j]= new Enemy({x:i * 60 +1,y:j * 60 + 120},bullets);
             }
         }
         this.matrixEnemy=matrixEnemy;
         
-        // for(let i=0;i<=3;i++){
-        //     console.log(bullets[i])
-        // }
-            
-        // bullets.forEach(e => {
-        //     console.log(e)
-        // });
+    
     }
-  
+   
    
 }
 

@@ -29,7 +29,7 @@ window.onload = () => {
 	// bullet :Bullet 
 	let bullets = []
 	for (let i = 0; i<100; i++) {
-		bullets.push( new Bullet ({x:30,y:0},{w:10,h:10}))
+		bullets.push( new Bullet ({x:30,y:-1},{w:10,h:10}))
 	}
 	let currentShoot = 0
 	
@@ -40,8 +40,8 @@ window.onload = () => {
 
 	Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
 
-	//let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers,...bullets];
-	let actors: Array<IActor> = [fps,canyon,...enemyArray,...bullets];
+	  
+	let actors: Array<IActor> = [fps,canyon,...enemyArray,...Game.barriers,...bullets];
 	
 	let lastFrame = 0;
 
@@ -52,7 +52,7 @@ window.onload = () => {
 		lastFrame = time;
 		
 		actors.forEach((e) => {
-			//console.log("bullet",e)
+			
 			e.update(delta,canvas.width,canvas.height)
 			if(e.gameOver=='Enter'){
 				fps = new FPSViewer({x: 5, y: 15 });
@@ -66,7 +66,7 @@ window.onload = () => {
 				createGame(bullets)
 				enemyArray = [] 
 				Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
-				actors = [fps,canyon,...enemyArray,...bullets];
+				actors = [fps,canyon,...enemyArray,...Game.barriers,...bullets];
 				//resetGame();
 			}
 			
@@ -109,8 +109,7 @@ window.onload = () => {
 		});
 
 	});
-	//window.requestAnimationFrame(render);
-
+	
 	document.body.addEventListener("keydown", (e) => {
 					
 			if(e.key=='Enter'){
@@ -125,7 +124,7 @@ window.onload = () => {
 				createGame(bullets)
 				enemyArray = [] 
 				Game.matrixEnemy.forEach(e => enemyArray = [ ...enemyArray, ...e])
-				actors = [fps,canyon,...enemyArray,...bullets];
+				actors = [fps,canyon,...enemyArray,...Game.barriers,...bullets];
 				//resetGame()
 			}
 			
