@@ -15,6 +15,7 @@
    
     "dev": "parcel index.html",
     "build": "yarn run clean && yarn run ghbuild", 
+    "start": "parcel serve -p $PORT index.html",
     "ghbuild": "parcel build --dist-dir docs --public-url /space_invaders index.html", 
     "clean": "rimraf docs dist" 
   },
